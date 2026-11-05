@@ -1,24 +1,34 @@
 """Точка входа в игру."""
 import os
-from game.tamagochi import SimpleTamagochi
+
 from game.clicker import SimpleRandomClicker
+from game.exceptions import (
+    NoFood,
+    NoMedicine,
+    NotEnoughMoney,
+    TamagochiIsGone,
+)
 from game.game import SimpleGame
 from game.models import Food, Medicine
+from game.tamagochi import SimpleTamagochi
 
 
-def main():
+def main() -> None:
+    """Запустить игру."""
     all_food = [
         Food(name='Бургер', satiety=20, price=40),
         Food(name='Салат', satiety=10, price=20),
-        Food(name='Яблоко', satiety=10, price=15)
+        Food(name='Яблоко', satiety=10, price=15),
     ]
     all_medicine = [
-        Medicine(name='Ибупрофен', price=30, heal_hp=20, number_of_uses=2)
+        Medicine(name='Ибупрофен', price=30, heal_hp=20, number_of_uses=2),
     ]
 
     tamagochi = SimpleTamagochi()
     clicker = SimpleRandomClicker()
-    game = SimpleGame(tamagochi, clicker, all_food=all_food, all_medicine=all_medicine)
+    game = SimpleGame(
+        tamagochi, clicker, all_food=all_food, all_medicine=all_medicine
+    )
 
     print("Добро пожаловать в тамагочи-кликер!")
     output = ''
@@ -27,13 +37,17 @@ def main():
         print(output)
         print(f"Сумка с едой: {game.food}")
         print(f"Сумка с лекарствами: {game.medicine}")
+
         status = game.get_status()
-        print(f"\nСтатус: голод {status['hunger']}, здоровье {status['hp']}, энергия {status['energy']}, монет {status['coins']}\n")
-        
+        print(
+            f"\nСтатус: голод {status['hunger']}, здоровье {status['hp']}, "
+            f"энергия {status['energy']}, монет {status['coins']}\n"
+        )
+
         if game.tamagochi.is_sick():
             print("=======Тамагочи болеет======")
             print("=======Отдых действует менее эффективно=======")
-            
+
         print("1. Пойти на работу")
         print("2. Купить еду")
         print("3. Купить лекарство")
@@ -49,35 +63,35 @@ def main():
                 output = f'Вы заработали {income} монет'
                 try:
                     game.tamagochi.update()
-                except Exception as e:
+                except TamagochiIsGone as e:
                     print(e)
                     break
             case "2":
                 try:
                     game.buy_food()
-                except Exception as e:
+                except NotEnoughMoney as e:
                     output = str(e)
             case "3":
                 try:
                     game.buy_medicine()
-                except Exception as e:
+                except NotEnoughMoney as e:
                     output = str(e)
             case "4":
                 try:
                     game.feed_tamagochi()
-                except Exception as e:
+                except NoFood as e:
                     output = str(e)
             case "5":
                 try:
                     game.heal_tamagochi()
-                except Exception as e:
+                except NoMedicine as e:
                     output = str(e)
             case "6":
                 game.play_with_tamagochi()
                 output = 'Вы поиграли с питомцем'
                 try:
                     game.tamagochi.update()
-                except Exception as e:
+                except TamagochiIsGone as e:
                     print(e)
                     break
             case "7":
@@ -85,7 +99,7 @@ def main():
                 output = 'Питомец отдохнул'
                 try:
                     game.tamagochi.update()
-                except Exception as e:
+                except TamagochiIsGone as e:
                     print(e)
                     break
             case "0":
