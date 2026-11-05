@@ -12,29 +12,50 @@ class AbstractGame(ABC):
     """Интерфейс для логики игры."""
     @abstractmethod
     def __init__(self, tamagochi: AbstractTamagochi, clicker: AbstractClicker,
-                 all_food: list[Food], all_medicine: list[Medicine]) -> None: pass
+                 all_food: list[Food], all_medicine: list[Medicine]) -> None:
+        pass
+
     @abstractmethod
-    def work(self) -> int: pass
+    def work(self) -> int:
+        pass
+
     @abstractmethod
-    def buy_food(self) -> None: pass
+    def buy_food(self) -> None:
+        pass
+
     @abstractmethod
-    def buy_medicine(self) -> None: pass
+    def buy_medicine(self) -> None:
+        pass
+
     @abstractmethod
-    def feed_tamagochi(self) -> None: pass
+    def feed_tamagochi(self) -> None:
+        pass
+
     @abstractmethod
-    def heal_tamagochi(self) -> None: pass
+    def heal_tamagochi(self) -> None:
+        pass
+
     @abstractmethod
-    def rest_tamagochi(self) -> None: pass
+    def rest_tamagochi(self) -> None:
+        pass
+
     @abstractmethod
-    def play_with_tamagochi(self) -> None: pass
+    def play_with_tamagochi(self) -> None:
+        pass
+
     @abstractmethod
-    def get_status(self) -> dict[str, Any]: pass
+    def get_status(self) -> dict[str, Any]:
+        pass
+
     @property
     @abstractmethod
-    def food(self) -> list[Food]: pass
+    def food(self) -> list[Food]:
+        pass
+
     @property
     @abstractmethod
-    def medicine(self) -> list[Medicine]: pass
+    def medicine(self) -> list[Medicine]:
+        pass
 
 
 class SimpleGame(AbstractGame):
@@ -52,7 +73,7 @@ class SimpleGame(AbstractGame):
         self.clicker.click()
         return self.clicker.income_per_click
 
-     def buy_food(self) -> None:
+    def buy_food(self) -> None:
         food = self._all_food[0]
         if self.clicker.income_per_click >= food.price:
             self._food_bag.append(food)
