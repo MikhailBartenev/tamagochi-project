@@ -83,8 +83,8 @@ class SimpleGame(AbstractGame):
     def feed_tamagochi(self) -> None:
         if not self._food_bag:
             raise NoFood("Нет еды в сумке")
-        # Удаляем первую порцию еды
-        food = self._food_bag.pop(0)
+        # Удаляем последнюю порцию еды (как будто её только что купили)
+        food = self._food_bag.pop()
         self.tamagochi.feed(food)
 
     def heal_tamagochi(self) -> None:
