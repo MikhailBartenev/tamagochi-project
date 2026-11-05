@@ -8,30 +8,22 @@ from .models import Food, Medicine
 class AbstractTamagochi(ABC):
     """Интерфейс логики тамагочи."""
     @abstractmethod
-    def feed(self, food: Food) -> None:
-        pass
+    def feed(self, food: Food) -> None: pass
     @abstractmethod
-    def play(self) -> None:
-        pass
+    def play(self) -> None: pass
     @abstractmethod
-    def rest(self) -> None:
-        pass
+    def rest(self) -> None: pass
     @abstractmethod
-    def heal(self, medicine: Medicine) -> None:
-        pass
+    def heal(self, medicine: Medicine) -> None: pass
     @property
     @abstractmethod
-    def status(self) -> dict[str, int]:
-        pass
+    def status(self) -> dict[str, int]: pass
     @abstractmethod
-    def is_alive(self) -> bool:
-        pass
+    def is_alive(self) -> bool: pass
     @abstractmethod
-    def is_sick(self) -> bool:
-        pass
+    def is_sick(self) -> bool: pass
     @abstractmethod
-    def update(self) -> None:
-        pass
+    def update(self) -> None: pass
 
 
 class SimpleTamagochi(AbstractTamagochi):
@@ -85,6 +77,3 @@ class SimpleTamagochi(AbstractTamagochi):
             self._energy = 0
             self._sick = True
             self._hp -= 10
-
-# Создаем псевдоним на случай, если тесты ищут класс без приставки Simple
-Tamagochi = SimpleTamagochi
