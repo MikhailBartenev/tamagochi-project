@@ -1,6 +1,5 @@
 """Модуль с интерфейсом и реализациями класса тамагочи."""
 from abc import ABC, abstractmethod
-
 from .exceptions import TamagochiIsGone
 from .models import Food, Medicine
 
@@ -8,22 +7,30 @@ from .models import Food, Medicine
 class AbstractTamagochi(ABC):
     """Интерфейс логики тамагочи."""
     @abstractmethod
-    def feed(self, food: Food) -> None: raise NotImplementedError
+    def feed(self, food: Food) -> None:
+        pass
     @abstractmethod
-    def play(self) -> None: raise NotImplementedError
+    def play(self) -> None:
+        pass
     @abstractmethod
-    def rest(self) -> None: raise NotImplementedError
+    def rest(self) -> None:
+        pass
     @abstractmethod
-    def heal(self, medicine: Medicine) -> None: raise NotImplementedError
+    def heal(self, medicine: Medicine) -> None:
+        pass
     @property
     @abstractmethod
-    def status(self) -> dict[str, int]: raise NotImplementedError
+    def status(self) -> dict[str, int]:
+        pass
     @abstractmethod
-    def is_alive(self) -> bool: raise NotImplementedError
+    def is_alive(self) -> bool:
+        pass
     @abstractmethod
-    def is_sick(self) -> bool: raise NotImplementedError
+    def is_sick(self) -> bool:
+        pass
     @abstractmethod
-    def update(self) -> None: raise NotImplementedError
+    def update(self) -> None:
+        pass
 
 
 class SimpleTamagochi(AbstractTamagochi):
