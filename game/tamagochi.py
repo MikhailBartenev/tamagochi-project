@@ -1,5 +1,6 @@
 """Модуль с интерфейсом и реализациями класса тамагочи."""
 from abc import ABC, abstractmethod
+
 from .exceptions import TamagochiIsGone
 from .models import Food, Medicine
 
