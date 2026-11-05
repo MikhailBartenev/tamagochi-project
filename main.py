@@ -56,7 +56,7 @@ def main() -> None:
         print("0. Выход")
 
         choice = input("Выберите действие: ")
-        
+
         if choice == "1":
             income = game.work()
             output = f'Вы заработали {income} монет'
