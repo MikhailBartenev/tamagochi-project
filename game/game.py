@@ -1,11 +1,10 @@
 """Модуль с интерфейсом и реализацией класса игры."""
 from abc import ABC, abstractmethod
 from typing import Any
-
-from .clicker import AbstractClicker
-from .exceptions import NoFood, NoMedicine, NotEnoughMoney
-from .models import Food, Medicine
 from .tamagochi import AbstractTamagochi
+from .clicker import AbstractClicker
+from .models import Food, Medicine
+from .exceptions import NotEnoughMoney, NoFood, NoMedicine
 
 
 class AbstractGame(ABC):
@@ -39,6 +38,7 @@ class AbstractGame(ABC):
 
 class SimpleGame(AbstractGame):
     """Простая реализация игры."""
+    
     def __init__(self, tamagochi: AbstractTamagochi, clicker: AbstractClicker,
                  all_food: list[Food], all_medicine: list[Medicine]):
         self.tamagochi = tamagochi
