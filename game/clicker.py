@@ -1,6 +1,6 @@
 """Модуль с интерфейсом и реализацией кликера."""
-from abc import ABC, abstractmethod
 import random
+from abc import ABC, abstractmethod
 
 
 class AbstractClicker(ABC):
