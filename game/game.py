@@ -52,11 +52,10 @@ class SimpleGame(AbstractGame):
         self.clicker.click()
         return self.clicker.income_per_click
 
-    def buy_food(self) -> None:
+     def buy_food(self) -> None:
         food = self._all_food[0]
         if self.clicker.income_per_click >= food.price:
             self._food_bag.append(food)
-            self.clicker._coins -= food.price
         else:
             raise NotEnoughMoney("Не хватает монет на еду")
 
@@ -64,7 +63,6 @@ class SimpleGame(AbstractGame):
         medicine = self._all_medicine[0]
         if self.clicker.income_per_click >= medicine.price:
             self._medicine_bag.append(medicine)
-            self.clicker._coins -= medicine.price
         else:
             raise NotEnoughMoney("Не хватает монет на лекарство")
 
