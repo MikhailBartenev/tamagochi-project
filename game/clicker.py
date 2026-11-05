@@ -16,7 +16,6 @@ class AbstractClicker(ABC):
 
 class SimpleRandomClicker(AbstractClicker):
     """Реализация кликера со случайным заработком."""
-    
     def __init__(self) -> None:
         self._coins = 0
 
