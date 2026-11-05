@@ -6,12 +6,15 @@ from abc import ABC, abstractmethod
 class AbstractClicker(ABC):
     """Интерфейс для кликера."""
     @abstractmethod
-    def __init__(self) -> None: raise NotImplementedError
+    def __init__(self) -> None:
+        pass
     @abstractmethod
-    def click(self) -> None: raise NotImplementedError
+    def click(self) -> None:
+        pass
     @property
     @abstractmethod
-    def income_per_click(self) -> int: raise NotImplementedError
+    def income_per_click(self) -> int:
+        pass
 
 
 class SimpleRandomClicker(AbstractClicker):
