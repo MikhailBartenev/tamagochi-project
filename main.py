@@ -55,55 +55,56 @@ def main() -> None:
         print("7. Отдых")
         print("0. Выход")
 
-        match input("Выберите действие: "):
-            case "1":
-                income = game.work()
-                output = f'Вы заработали {income} монет'
-                try:
-                    game.tamagochi.update()
-                except TamagochiIsGone as e:
-                    print(e)
-                    break
-            case "2":
-                try:
-                    game.buy_food()
-                except NotEnoughMoney as e:
-                    output = str(e)
-            case "3":
-                try:
-                    game.buy_medicine()
-                except NotEnoughMoney as e:
-                    output = str(e)
-            case "4":
-                try:
-                    game.feed_tamagochi()
-                except NoFood as e:
-                    output = str(e)
-            case "5":
-                try:
-                    game.heal_tamagochi()
-                except NoMedicine as e:
-                    output = str(e)
-            case "6":
-                game.play_with_tamagochi()
-                output = 'Вы поиграли с питомцем'
-                try:
-                    game.tamagochi.update()
-                except TamagochiIsGone as e:
-                    print(e)
-                    break
-            case "7":
-                game.rest_tamagochi()
-                output = 'Питомец отдохнул'
-                try:
-                    game.tamagochi.update()
-                except TamagochiIsGone as e:
-                    print(e)
-                    break
-            case "0":
+        choice = input("Выберите действие: ")
+        
+        if choice == "1":
+            income = game.work()
+            output = f'Вы заработали {income} монет'
+            try:
+                game.tamagochi.update()
+            except TamagochiIsGone as e:
+                print(e)
                 break
-            case _:
-                output = "Неверная команда"
+        elif choice == "2":
+            try:
+                game.buy_food()
+            except NotEnoughMoney as e:
+                output = str(e)
+        elif choice == "3":
+            try:
+                game.buy_medicine()
+            except NotEnoughMoney as e:
+                output = str(e)
+        elif choice == "4":
+            try:
+                game.feed_tamagochi()
+            except NoFood as e:
+                output = str(e)
+        elif choice == "5":
+            try:
+                game.heal_tamagochi()
+            except NoMedicine as e:
+                output = str(e)
+        elif choice == "6":
+            game.play_with_tamagochi()
+            output = 'Вы поиграли с питомцем'
+            try:
+                game.tamagochi.update()
+            except TamagochiIsGone as e:
+                print(e)
+                break
+        elif choice == "7":
+            game.rest_tamagochi()
+            output = 'Питомец отдохнул'
+            try:
+                game.tamagochi.update()
+            except TamagochiIsGone as e:
+                print(e)
+                break
+        elif choice == "0":
+            break
+        else:
+            output = "Неверная команда"
 
 
 if __name__ == "__main__":
