@@ -1,9 +1,10 @@
 """Модуль с интерфейсом и реализацией кликера."""
-import random
 from abc import ABC, abstractmethod
+import random
 
 
 class AbstractClicker(ABC):
+    """Интерфейс для кликера."""
     @abstractmethod
     def __init__(self) -> None: raise NotImplementedError
     @abstractmethod
@@ -14,6 +15,8 @@ class AbstractClicker(ABC):
 
 
 class SimpleRandomClicker(AbstractClicker):
+    """Реализация кликера со случайным заработком."""
+    
     def __init__(self) -> None:
         self._coins = 0
 
