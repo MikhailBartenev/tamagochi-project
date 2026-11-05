@@ -113,3 +113,6 @@ class SimpleGame(AbstractGame):
     @property
     def medicine(self) -> list[Medicine]:
         return self._medicine_bag
+
+# Псевдоним для тестов
+Game = SimpleGame
