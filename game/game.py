@@ -82,7 +82,9 @@ class SimpleGame(AbstractGame):
         self._medicine_bag: list[Medicine] = []
 
     def work(self) -> int:
+        # Вызываем клик, чтобы заработать монеты
         self.clicker.click()
+        # Возвращаем текущее количество монет (для теста)
         return self.clicker.income_per_click
 
     def buy_food(self) -> None:
@@ -102,7 +104,8 @@ class SimpleGame(AbstractGame):
     def feed_tamagochi(self) -> None:
         if not self._food_bag:
             raise NoFood("Нет еды в сумке")
-        food = self._food_bag.pop(0)
+        # Используем pop() (удаляет последний добавленный элемент)
+        food = self._food_bag.pop()
         self.tamagochi.feed(food)
 
     def heal_tamagochi(self) -> None:
