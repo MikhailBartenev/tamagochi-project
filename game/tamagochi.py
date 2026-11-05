@@ -1,11 +1,11 @@
 """Модуль с интерфейсом и реализациями класса тамагочи."""
 from abc import ABC, abstractmethod
-
 from .exceptions import TamagochiIsGone
 from .models import Food, Medicine
 
 
 class AbstractTamagochi(ABC):
+    """Интерфейс логики тамагочи."""
     @abstractmethod
     def feed(self, food: Food) -> None: raise NotImplementedError
     @abstractmethod
@@ -26,6 +26,8 @@ class AbstractTamagochi(ABC):
 
 
 class SimpleTamagochi(AbstractTamagochi):
+    """Простая реализация тамагочи."""
+    
     def __init__(self) -> None:
         self._hunger = 50
         self._hp = 100
