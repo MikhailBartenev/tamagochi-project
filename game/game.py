@@ -1,6 +1,7 @@
 """Модуль с интерфейсом и реализацией класса игры."""
 from abc import ABC, abstractmethod
 from typing import Any
+
 from .clicker import AbstractClicker
 from .exceptions import NoFood, NoMedicine, NotEnoughMoney
 from .models import Food, Medicine
