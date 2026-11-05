@@ -39,6 +39,7 @@ class AbstractGame(ABC):
 
 class SimpleGame(AbstractGame):
     """Простая реализация игры."""
+    
     def __init__(self, tamagochi: AbstractTamagochi, clicker: AbstractClicker,
                  all_food: list[Food], all_medicine: list[Medicine]):
         self.tamagochi = tamagochi
