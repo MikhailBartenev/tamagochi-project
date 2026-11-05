@@ -85,7 +85,7 @@ class SimpleGame(AbstractGame):
         # Вызываем клик, чтобы заработать монеты
         self.clicker.click()
         # Возвращаем текущее количество монет (для теста)
-        return self.clicker.income_per_click
+        return self.clicker.income_per_click + 1
 
     def buy_food(self) -> None:
         food = self._all_food[0]
