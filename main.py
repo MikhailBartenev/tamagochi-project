@@ -1,6 +1,4 @@
 """Точка входа в игру."""
-import os
-
 from game.clicker import SimpleRandomClicker
 from game.exceptions import (
     NoFood,
@@ -106,8 +104,6 @@ def main() -> None:
                 break
             case _:
                 output = "Неверная команда"
-
-        os.system('cls' if os.name == 'nt' else 'clear')
 
 
 if __name__ == "__main__":
