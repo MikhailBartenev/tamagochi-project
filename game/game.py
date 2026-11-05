@@ -1,7 +1,6 @@
 """Модуль с интерфейсом и реализацией класса игры."""
 from abc import ABC, abstractmethod
 from typing import Any
-
 from .clicker import AbstractClicker
 from .exceptions import NoFood, NoMedicine, NotEnoughMoney
 from .models import Food, Medicine
@@ -12,35 +11,46 @@ class AbstractGame(ABC):
     """Интерфейс для логики игры."""
     @abstractmethod
     def __init__(self, tamagochi: AbstractTamagochi, clicker: AbstractClicker,
-                 all_food: list[Food], all_medicine: list[Medicine]): raise NotImplementedError
+                 all_food: list[Food], all_medicine: list[Medicine]) -> None:
+        pass
     @abstractmethod
-    def work(self) -> int: raise NotImplementedError
+    def work(self) -> int:
+        pass
     @abstractmethod
-    def buy_food(self) -> None: raise NotImplementedError
+    def buy_food(self) -> None:
+        pass
     @abstractmethod
-    def buy_medicine(self) -> None: raise NotImplementedError
+    def buy_medicine(self) -> None:
+        pass
     @abstractmethod
-    def feed_tamagochi(self) -> None: raise NotImplementedError
+    def feed_tamagochi(self) -> None:
+        pass
     @abstractmethod
-    def heal_tamagochi(self) -> None: raise NotImplementedError
+    def heal_tamagochi(self) -> None:
+        pass
     @abstractmethod
-    def rest_tamagochi(self): raise NotImplementedError
+    def rest_tamagochi(self) -> None:
+        pass
     @abstractmethod
-    def play_with_tamagochi(self): raise NotImplementedError
+    def play_with_tamagochi(self) -> None:
+        pass
     @abstractmethod
-    def get_status(self) -> dict[str, Any]: raise NotImplementedError
+    def get_status(self) -> dict[str, Any]:
+        pass
     @property
     @abstractmethod
-    def food(self) -> list[Food]: raise NotImplementedError
+    def food(self) -> list[Food]:
+        pass
     @property
     @abstractmethod
-    def medicine(self) -> list[Medicine]: raise NotImplementedError
+    def medicine(self) -> list[Medicine]:
+        pass
 
 
 class SimpleGame(AbstractGame):
     """Простая реализация игры."""
     def __init__(self, tamagochi: AbstractTamagochi, clicker: AbstractClicker,
-                 all_food: list[Food], all_medicine: list[Medicine]):
+                 all_food: list[Food], all_medicine: list[Medicine]) -> None:
         self.tamagochi = tamagochi
         self.clicker = clicker
         self._all_food = all_food
