@@ -28,7 +28,6 @@ class AbstractTamagochi(ABC):
 
 class SimpleTamagochi(AbstractTamagochi):
     """Простая реализация тамагочи."""
-    
     def __init__(self) -> None:
         self._hunger = 50
         self._hp = 100
