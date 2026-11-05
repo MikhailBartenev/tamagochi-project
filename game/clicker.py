@@ -28,3 +28,6 @@ class SimpleRandomClicker(AbstractClicker):
     @property
     def income_per_click(self) -> int:
         return self._coins
+
+# Псевдоним для тестов
+RandomClicker = SimpleRandomClicker
