@@ -10,9 +10,15 @@ from .tamagochi import AbstractTamagochi
 
 class AbstractGame(ABC):
     """Интерфейс для логики игры."""
+
     @abstractmethod
-    def __init__(self, tamagochi: AbstractTamagochi, clicker: AbstractClicker,
-                 all_food: list[Food], all_medicine: list[Medicine]) -> None:
+    def __init__(
+        self,
+        tamagochi: AbstractTamagochi,
+        clicker: AbstractClicker,
+        all_food: list[Food],
+        all_medicine: list[Medicine],
+    ) -> None:
         pass
 
     @abstractmethod
@@ -60,8 +66,14 @@ class AbstractGame(ABC):
 
 class SimpleGame(AbstractGame):
     """Простая реализация игры."""
-    def __init__(self, tamagochi: AbstractTamagochi, clicker: AbstractClicker,
-                 all_food: list[Food], all_medicine: list[Medicine]) -> None:
+
+    def __init__(
+        self,
+        tamagochi: AbstractTamagochi,
+        clicker: AbstractClicker,
+        all_food: list[Food],
+        all_medicine: list[Medicine],
+    ) -> None:
         self.tamagochi = tamagochi
         self.clicker = clicker
         self._all_food = all_food
