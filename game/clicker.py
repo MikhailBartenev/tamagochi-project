@@ -8,11 +8,9 @@ class AbstractClicker(ABC):
     @abstractmethod
     def __init__(self) -> None:
         pass
-
     @abstractmethod
     def click(self) -> None:
         pass
-
     @property
     @abstractmethod
     def income_per_click(self) -> int:
