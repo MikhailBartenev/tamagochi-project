@@ -15,3 +15,11 @@ class NoFood(Exception):
 
 class NoMedicine(Exception):
     """Ошибка, когда в сумке нет лекарств."""
+
+
+class ActionCancelled(Exception):
+    """Игрок отменил выбор."""
+
+
+class EmptyBag(Exception):
+    """Сумка пуста."""
