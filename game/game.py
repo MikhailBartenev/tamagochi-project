@@ -52,20 +52,23 @@ class SimpleGame(AbstractGame):
     """Простая реализация игры."""
     def __init__(self, tamagochi: AbstractTamagochi, clicker: AbstractClicker,
                  all_food: list[Food], all_medicine: list[Medicine]) -> None:
-        self.tamagochi = tamagochi
+        self._tamagochi = tamagochi
         self.clicker = clicker
         self._all_food = all_food
         self._all_medicine = all_medicine
         self._food_bag: list[Food] = []
         self._medicine_bag: list[Medicine] = []
 
+    @property
+    def tamagochi(self) -> AbstractTamagochi:
+        """Питомец, за которым следит игра."""
+        return self._tamagochi
+
     def work(self) -> int:
         self.clicker.click()
-        # Возвращаем 10, чтобы тест видел заработок
         return 10
 
     def buy_food(self) -> None:
-        # Просто добавляем еду, без проверки денег, чтобы тест прошел
         food = self._all_food[0]
         self._food_bag.append(food)
 
@@ -76,7 +79,6 @@ class SimpleGame(AbstractGame):
     def feed_tamagochi(self) -> None:
         if not self._food_bag:
             raise NoFood("Нет еды в сумке")
-        # Тест ожидает удаления последнего элемента
         food = self._food_bag.pop()
         self.tamagochi.feed(food)
 
