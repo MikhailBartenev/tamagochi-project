@@ -1,10 +1,8 @@
 """Точка входа в игру."""
 from game.clicker import SimpleRandomClicker
 from game.exceptions import (
-    NoFood,
-    NoMedicine,
+    EmptyBag,
     NotEnoughMoney,
-    TamagochiIsGone,
 )
 from game.game import SimpleGame
 from game.models import Food, Medicine
@@ -60,11 +58,6 @@ def main() -> None:
         if choice == "1":
             income = game.work()
             output = f'Вы заработали {income} монет'
-            try:
-                game.tamagochi.update()
-            except TamagochiIsGone as e:
-                print(e)
-                break
         elif choice == "2":
             try:
                 game.buy_food()
@@ -78,33 +71,27 @@ def main() -> None:
         elif choice == "4":
             try:
                 game.feed_tamagochi()
-            except NoFood as e:
+            except EmptyBag as e:
                 output = str(e)
         elif choice == "5":
             try:
                 game.heal_tamagochi()
-            except NoMedicine as e:
+            except EmptyBag as e:
                 output = str(e)
         elif choice == "6":
             game.play_with_tamagochi()
             output = 'Вы поиграли с питомцем'
-            try:
-                game.tamagochi.update()
-            except TamagochiIsGone as e:
-                print(e)
-                break
         elif choice == "7":
             game.rest_tamagochi()
             output = 'Питомец отдохнул'
-            try:
-                game.tamagochi.update()
-            except TamagochiIsGone as e:
-                print(e)
-                break
         elif choice == "0":
             break
         else:
             output = "Неверная команда"
+
+        if not game.tamagochi.is_alive():
+            print("Питомец умер :(")
+            break
 
 
 if __name__ == "__main__":
