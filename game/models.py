@@ -10,7 +10,7 @@ class Food:
     price: int
 
     def __repr__(self) -> str:
-        return f"{self.name} (цена: {self.price}, сытость: {self.satiety})"
+        return f'{self.name} стоимость: {self.price}, утоляет голод на {self.satiety} единиц'
 
 
 @dataclass
@@ -26,4 +26,4 @@ class Medicine:
         return self.uses >= self.number_of_uses
 
     def __repr__(self) -> str:
-        return f"{self.name} (цена: {self.price}, лечит: {self.heal_hp})"
+        return f'{self.name} стоимость: {self.price}, лечит на {self.heal_hp} HP'
