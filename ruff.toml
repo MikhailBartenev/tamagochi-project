@@ -1,2 +1,3 @@
 line-length = 79
-target-version = "py312"
+extend-exclude = ["tests", "venv", "env", ".venv"]
+force-exclude = true
