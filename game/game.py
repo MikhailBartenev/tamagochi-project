@@ -96,8 +96,7 @@ class SimpleGame(AbstractGame):
     def feed_tamagochi(self) -> None:
         if not self._food_bag:
             raise EmptyBag("Сумка с едой пуста")
-        food = self._food_bag[0]
-        self._food_bag.remove(food)
+        food = self._food_bag.pop()  # <-- Исправлено: удаляем последнюю
         self._tamagochi.feed(food)
         self._tamagochi.update()
 
